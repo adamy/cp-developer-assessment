@@ -34,8 +34,12 @@ export class TodoListComponent{
     this.todoService.updateTodoItem(item.id, item)
       .then((resp: ApiResponseWithType<Number>) => {
         if(resp.isSuccess){
-          this.getItems();
-          this.toastr.success("Todo item marked as complete");
+          if(resp.result == 0){
+            this.getItems();
+            this.toastr.success("Todo item marked as complete");
+          }else{
+            this.toastr.error(`${resp.errorMessage}`, "Error");
+          }
         }else{
           this.toastr.error("Mark as complete failed", "Error");
         }

@@ -78,7 +78,7 @@
           </div>
           <div class="mb-3 offset-md-2 row">
             <div class="hstack gap-2">
-              <input type = "submit" class="btn btn-primary" value="Add Item" />
+              <input type = "submit" class="btn btn-primary" value="Add Item" [disabled]="isPosting" />
               <button
                 type="reset"
                 class="btn btn-secondary"
