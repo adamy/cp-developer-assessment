@@ -59,9 +59,7 @@
                 required 
                 maxlength="150" minlength="1"
               />
-              <div *ngIf="(descForm.controls['description'].errors?.['required'] || descForm.controls['description'].errors?.['maxlength']
-                || descForm.controls['description'].errors?.['minlength'] || descForm.controls['description'].errors?.['isDescriptionUnique']
-              )
+              <div *ngIf="descForm.controls['description'].invalid
               && (descForm.controls['description'].dirty || descForm.controls['description'].touched)" class="alert alert-danger mt-3">
                 <div *ngIf="descForm.controls['description'].errors?.['required']">
                   Description is required.
