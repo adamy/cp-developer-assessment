@@ -23,17 +23,23 @@ namespace TodoList.Data.TodoListInMemory
         private readonly IDbContextFactory<TodoContext> _contextFactory;
         ILogger<TodoListRepository> _logger;
 
-        public async Task<ICollection<TodoItemViewModel>> GetTodoItems()
+        public async Task<ICollection<TodoItemViewModel>> GetTodoItems(bool includeAll = false)
         {
             using var context = _contextFactory.CreateDbContext();
-            return await context.TodoItems.
-                OrderByDescending(x => x.CreatedAt).
-                Select(x => new TodoItemViewModel
+
+            var query = context.TodoItems.AsQueryable();
+            if (!includeAll)
             {
-                Id = x.Id,
-                Description = x.Description,
-                IsCompleted = x.IsCompleted
-            }).ToListAsync();
+                query = query.Where(i => i.IsCompleted == false);
+            }
+
+            return await query.OrderByDescending(x => x.CreatedAt)
+                .Select(x => new TodoItemViewModel
+                {
+                    Id = x.Id,
+                    Description = x.Description,
+                    IsCompleted = x.IsCompleted
+                }).ToListAsync();
         }
 
         public async Task<TodoItemViewModel> GetTodoItem(Guid id)

@@ -9,5 +9,6 @@ namespace TodoList.Common.Services
         Task<ApiResponse<TodoItemViewModel>> GetTodoItem(Guid id);
         Task<ApiResponse<ICollection<TodoItemViewModel>>> GetTodoItems();
         Task<ApiResponse<UpdateTodoResultEnum>> UpdateTodoItem(TodoItemViewModel todoItem);
+        Task<ApiResponse<bool>> TodoItemDescriptionExists(string description);
     }
 }

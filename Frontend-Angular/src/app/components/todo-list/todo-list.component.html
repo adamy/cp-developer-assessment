@@ -1,0 +1,34 @@
+<h1>
+    Showing {{ items.length }} Item(s)
+    <button
+      type="button"
+      class="pull-right btn btn-primary"
+      (click)="getItems()"
+    >
+      Refresh
+    </button>
+  </h1>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ item.id }}</td>
+        <td>{{ item.description }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-warning btn-sm"
+            (click)="handleMarkAsComplete(item)"
+          >
+            Mark as completed
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

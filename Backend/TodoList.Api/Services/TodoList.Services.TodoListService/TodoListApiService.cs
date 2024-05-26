@@ -194,5 +194,29 @@ namespace TodoList.Services.TodoListService
                 };
             }
         }
+
+        public async Task<ApiResponse<bool>> TodoItemDescriptionExists(string description)
+        {
+            try
+            {
+                var result = await _todoListRepository.TodoItemDescriptionExists(description);
+                return new ApiResponse<bool>
+                {
+                    Result = result,
+                    IsSuccess = true
+                };
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = "Error checking if description exists";
+                logger.LogError(ex, errorMessage);
+                return new ApiResponse<bool>
+                {
+                    Result = false,
+                    ErrorMessage = errorMessage,
+                    IsSuccess = false
+                };
+            }
+        }
     }
 }

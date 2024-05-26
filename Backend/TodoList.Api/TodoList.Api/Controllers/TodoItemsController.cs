@@ -59,6 +59,12 @@ namespace TodoList.Api.Controllers
         public async Task<ApiResponse<AddTodoResultEnum>> AddTodoItem(TodoItemAddViewModel todoItem)
         {
             return await _todoListApiService.AddTodoItem(todoItem);
-        } 
+        }
+
+        [HttpPost("exist")]
+        public async Task<ApiResponse<bool>> TodoItemDescriptionExists(string description)
+        {
+            return await _todoListApiService.TodoItemDescriptionExists(description);
+        }
     }
 }
