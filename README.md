@@ -25,3 +25,15 @@ You are welcome to use comments in the code to outline any assumptions you might
 Once completed please push the completed solution to your own repo and send us the link.
 <br/><br/>
 We look forward to seeing your submission and have fun!
+
+# Developer Implementation Note by adamy
+
+**Back End**
+1. Refactored the backend architecture by organizing the code into the controller-service-repository pattern.
+2. Added unit tests for crucial components.
+
+**Front End**
+1. Developed the Angular UI for the API.
+2. Implemented the "mark as complete" feature.
+3. Added field validation and notifications for API errors.
+4. Created unit tests for Angular components.
