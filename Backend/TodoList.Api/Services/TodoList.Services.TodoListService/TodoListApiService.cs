@@ -70,7 +70,7 @@ namespace TodoList.Services.TodoListService
                         Id = todoItem.Id,
                         IsCompleted = todoItem.IsCompleted
                     },
-                    IsSuccess = false
+                    IsSuccess = true
                 };
             }
             catch (Exception ex)
